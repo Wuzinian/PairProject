@@ -1,5 +1,18 @@
-<?php
+<!DOCTYPE html>
+<html lang="zh">
+<head>
 
+</head>
+<body>
+<script>
+    function ondelete(ob){
+        var child = ob.parentElement.parentElement;
+        var parent = child.parentElement;
+        parent.removeChild(child);
+    }
+</script>
+</body>
+<?php
 require_once(dirname(__FILE__) . "\\..\\models\\Paper.php");
 
 
@@ -17,7 +30,9 @@ class PaperListView
         echo '<div class="panel panel-primary">';
         echo '<div class="panel-heading"';
         echo '<h3 class="panel-title">';
-        echo '<a href="'.$paper->link.'" class = "panel-title">'.$paper->title.'</a>';
+        echo '<a href="'.$paper->link.'">';
+        echo '<div style="color: white">'.$paper->title.'</div></a>';
+        echo '<button class="but" onclick="ondelete(this)">删除</button>';
         echo '</h3>';
         echo '</div>';
         echo '<div class="panel-body">';
@@ -34,4 +49,5 @@ class PaperListView
         echo '</div>';
         echo '</div>';
     }
-}
+}?>
+</html>
